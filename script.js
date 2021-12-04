@@ -14,6 +14,8 @@ document.querySelector('.check').addEventListener('click', function () {
   //when the user enter the right guess (win the game)
   else if (guess === secertNumber) {
     document.querySelector('.message').textContent = '🏆 Correct Number ';
+    document.querySelector('.number').textContent = secertNumber;
+
     //Modifying the style in the winning case
     document.querySelector('body').style.backgroundColor = '#60b347';
 
@@ -43,4 +45,22 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+});
+
+//Reset button handler
+document.querySelector('.again').addEventListener('click', function () {
+  //reset score and secret number
+  document.querySelector('.score').textContent = 20;
+  document.querySelector('.number').textContent = '?';
+
+  //reset the message and input field
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.guess').value = '';
+
+  //reset the style to default
+  document.querySelector('body').style.backgroundColor = '#222';
+
+  document.querySelector('.number').style.width = '15rem';
+
+  secertNumber = Math.trunc(Math.random() * 20) + 1;
 });
