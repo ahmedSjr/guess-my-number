@@ -7,11 +7,20 @@ console.log(secertNumber);
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   //Implement game logic
+  //When the user enter a not valid number
   if (!guess) {
     document.querySelector('.message').textContent = '🚨 Not a valid number';
-  } else if (guess === secertNumber) {
+  }
+  //when the user enter the right guess (win the game)
+  else if (guess === secertNumber) {
     document.querySelector('.message').textContent = '🏆 Correct Number ';
-  } else if (guess > secertNumber) {
+    //Modifying the style in the winning case
+    document.querySelector('body').style.backgroundColor = '#60b347';
+
+    document.querySelector('.number').style.width = '30rem';
+  }
+  //when guess too high
+  else if (guess > secertNumber) {
     if (score > 0) {
       document.querySelector('.message').textContent = '📈 Too High ';
       //Update the score
@@ -21,7 +30,9 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.message').textContent = '😢 You Lost the game';
       document.querySelector('.score').textContent = 0;
     }
-  } else if (guess < secertNumber) {
+  }
+  //when guess too low
+  else if (guess < secertNumber) {
     if (score > 0) {
       document.querySelector('.message').textContent = '📉 Too Low ';
       //Update the score
